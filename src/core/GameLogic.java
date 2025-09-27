@@ -38,7 +38,7 @@ public class GameLogic {
 	/**
 	 * Displays game board as 10x10 of numbers separated by |.
 	 * Will include identifiers in places where P1 and P2 are located,
-	 * or "1&2" if both player occupy the same spot.
+	 * or "1&amp;2" if both player occupy the same spot.
 	 */
 	public void displayBoard() {
 		table.displayTable(p1.getPos(), p2.getPos());
@@ -83,6 +83,32 @@ public class GameLogic {
 	 */
 	public boolean winner() {
 		return hasWinner;
+	}
+
+	// Added getter methods to support GUI integration
+
+	/**
+	 *
+	 * @return current Player object
+	 */
+	public Player getCurrentPlayer() {
+		return currentPlayer;
+	}
+
+	/**
+	 *
+	 * @return Player1 Object
+	 */
+	public Player getPlayer1() {
+		return p1;
+	}
+
+	/**
+	 * 
+	 * @return Player2 Object
+	 */
+	public Player getPlayer2() {
+		return p2;
 	}
 
 }

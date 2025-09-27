@@ -16,9 +16,7 @@ public class GameConsoleUI {
  /**
   * Begins the game and displays the board, then calls
   * promptRoll(), playTurn(), and displayBoard() until a winner is determined.
-  * @link promptRoll()
-  * @link playTurn()
-  * @link displayBoard()
+  * {@link #promptRoll()}
   */
  public void startGame() throws InterruptedException {
 		System.out.println("Would you like to play against:\n[1] A computer\n[2] Another player");

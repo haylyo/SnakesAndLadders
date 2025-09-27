@@ -6,9 +6,15 @@ public class Table {
 
 	private final int[][] array;
 
-	private final Map<Integer, Integer> snakes; // Maps bottom and top.
+private static final Map<Integer, Integer> snakes = Map.of( // head, tail
+        97, 19,
+        74, 36
+);
 
-	private final Map<Integer, Integer> ladders; // Maps bottom and top.
+private static final Map<Integer, Integer> ladders = Map.of( // base, head
+        3, 25,
+        27, 57
+);
 
 	public Table() {
 		array = new int[][]{
@@ -23,18 +29,28 @@ public class Table {
 				{20, 19, 18, 17, 16, 15, 14, 13, 12, 11},
 				{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 		};
-		snakes = Map.of( // head, tail
-				97, 19,
-				74, 36
-				);
-		ladders = Map.of( // base, head
-				3, 25,
-				27, 57
-		);
 	}
 
 	/**
-	 * Displays the board, coloring players blue, snakes red, and ladders green.
+	 * Checks if space is tail end of a snake.
+	 * @param num The space number to be checked.
+	 * @return boolean true if the space is the tail end of a snake.
+	 */
+	public static boolean isSnakeTail(int num) {
+		return snakes.containsValue(num);
+	}
+
+	/**
+	 * Checks if space is head of ladder.
+	 * @param num The space number to be checked.
+	 * @return boolean true if the space is the head of a ladder.
+	 */
+	public static boolean isLadderHead(int num) {
+		return ladders.containsValue(num);
+	}
+
+	/**
+	 * Displays the board in the console. Colors players blue, snakes red, and ladders green.
 	 * @param p1 player 1 position
 	 * @param p2 player 2 position
 	 */
@@ -85,7 +101,7 @@ public class Table {
 	 * @param pos integer position to be checked
 	 * @return boolean true if ladder base false if not
 	 */
-	public boolean isLadder(int pos) {
+	public static boolean isLadder(int pos) {
 		return ladders.containsKey(pos);
 	}
 
@@ -94,7 +110,7 @@ public class Table {
 	 * @param pos integer position to be checked
 	 * @return boolean true if snake head false if not
 	 */
-	public boolean isSnake(int pos) {
+	public static boolean isSnake(int pos) {
 		return snakes.containsKey(pos);
 	}
 
@@ -116,12 +132,22 @@ public class Table {
 		return ladders.get(base);
 	}
 
+	/**
+	 * Offers the ability to display colored text in the console.
+	 * BLUE, RED, and GREEN available.
+	 */
 	public class ColorConsole {
 		public static final String RESET = "\u001B[0m";
 		public static final String BLUE = "\u001B[34m";
 		public static final String RED = "\u001B[31m";
 		public static final String GREEN = "\u001B[32m";
 
+		/**
+		 * Colors text in the console.
+		 * @param text the string to be colored
+		 * @param color the desired color (RED BLUE GREEN)
+		 * @return a string with the text input colored + code for following text to be normal.
+		 */
 		public static String colorText(String text, String color) {
 			return color + text + RESET;
 		}

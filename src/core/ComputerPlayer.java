@@ -10,7 +10,7 @@ public class ComputerPlayer extends Player {
      * Simulated computer player roll.
      * @param die
      * @return integer number rolled 1-6
-     * @deprecated Not currently used, all user interaction handled in Main & GameConsoleUI
+     * @deprecated Not currently used, all user interaction handled in Main and GameConsoleUI
      */
     @Override
     public int roll(Die die) {
